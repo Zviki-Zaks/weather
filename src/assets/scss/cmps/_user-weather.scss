@@ -1,0 +1,40 @@
+.user-weather {
+    .dark & {
+        @include preview($white, $clr5, #c7c7c7);
+    }
+    .lite & {
+        @include preview($clr2, $clr5, #c7c7c7);
+    }
+    > * {
+        display: flex;
+        justify-content: space-between;
+        gap: 20px;
+    }
+    .details {
+        .time {
+            display: flex;
+            flex-direction: column;
+            text-align: end;
+            // .day-date {
+            //     display: flex;
+            //     flex-direction: row-reverse;
+            //     flex-wrap: wrap;
+            //     .date {
+            //         display: inline-block;
+            //     }
+            // }
+        }
+    }
+    .info {
+        align-items: center;
+        .temp {
+            sup {
+                font-size: 10px;
+            }
+        }
+        .description {
+            display: flex;
+            align-items: flex-end;
+        }
+    }
+}
