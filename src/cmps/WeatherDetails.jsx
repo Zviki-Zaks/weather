@@ -1,7 +1,6 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { setIsModal } from '../store/actions/weatherActions'
-import { Modal } from './Modal'
 import { WeatherIcon } from './WeatherIcon'
 
 export const WeatherDetails = ({ weather, onLess }) => {
@@ -12,11 +11,8 @@ export const WeatherDetails = ({ weather, onLess }) => {
     dt = new Date(dt * 1000)
     let unit = 'C'
 
-    // const [iFeel, setIFeel] = useState(null)
-
     const onFeel = () => {
         toggleModal('feel')
-        // setIFeel(prompt('?'))
     }
 
     const dispatch = useDispatch()
@@ -45,12 +41,11 @@ export const WeatherDetails = ({ weather, onLess }) => {
                 </p>
                 <p className="description line">{description} <WeatherIcon icon={icon} /></p>
                 <p className="humidity line">Humidity: {humidity}% </p>
-
+                {clouds.all && <p className="clouds line">Clouds: {clouds.all}% </p>}
 
                 <button onClick={onLess}>Less</button>
             </section>
-            {iFeel}
-            {/* {isModal && <Modal type={'prompt'} funcs={{ toggleModal, onClick }} />} */}
+
         </section>
     )
 }

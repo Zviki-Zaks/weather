@@ -1,7 +1,7 @@
 import React from 'react'
 import { useDispatch } from 'react-redux'
 import { useForm } from '../hooks/useFormRegister'
-import { setModalResult } from '../store/actions/weatherActions'
+import { setIsModal, setModalResult } from '../store/actions/weatherActions'
 import { Input } from './Input'
 
 export const Modal = ({ type, funcs, text }) => {
@@ -12,6 +12,7 @@ export const Modal = ({ type, funcs, text }) => {
     const dispatch = useDispatch()
     const onAction = () => {
         dispatch(setModalResult(register(type).value))
+        dispatch(setIsModal())
     }
     return (
         <>
