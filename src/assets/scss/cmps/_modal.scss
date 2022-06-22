@@ -1,6 +1,6 @@
 .dark-screen {
     position: fixed;
-    background-color: rgba(20, 20, 20, 0.418);
+    background-color: rgba(0, 0, 0, 0.5);
     width: 100vw;
     height: 100vh;
     margin: auto;
@@ -8,18 +8,27 @@
     left: 0;
 }
 .modal {
-    @include preview($white, $clr5, #c7c7c7);
+    @include preview($white, $clr5, #c7c7c7, rem(25px));
     position: absolute;
     top: 30%;
     left: 50%;
     transform: translate(-50%, -50%);
-
+    box-shadow: 0 1px 7px $black;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
     .txt {
-        margin-block-end: 20px;
+        // padding: 0.5em 1em;
     }
-
+    input {
+        padding: 0.5em 1em;
+    }
     .action-container {
         display: flex;
         justify-content: space-between;
+        .action-btn {
+            background-color: $blue;
+            color: $white;
+        }
     }
 }

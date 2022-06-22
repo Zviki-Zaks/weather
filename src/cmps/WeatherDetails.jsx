@@ -41,7 +41,7 @@ export const WeatherDetails = ({ weather, onLess }) => {
                 </p>
                 <p className="description line">{description} <WeatherIcon icon={icon} /></p>
                 <p className="humidity line">Humidity: {humidity}% </p>
-                {clouds.all && <p className="clouds line">Clouds: {clouds.all}% </p>}
+                <p className="clouds line">Clouds: {clouds.all}% </p>
 
                 <button onClick={onLess}>Less</button>
             </section>

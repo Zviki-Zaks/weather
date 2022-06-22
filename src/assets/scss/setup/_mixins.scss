@@ -94,12 +94,12 @@
     color: $txtClr;
 }
 
-@mixin preview($bgClr, $txtClr, $bsClr) {
+@mixin preview($bgClr, $txtClr, $bsClr, $padd: 1rem) {
     background-color: $bgClr;
     color: $txtClr;
     max-width: 500px;
     margin: 0 auto;
-    padding: 1rem;
+    padding: $padd;
     border-radius: 5px;
     box-shadow: 0px 1px 0px 0px $bsClr;
     button {
