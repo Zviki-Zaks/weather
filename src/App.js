@@ -5,19 +5,19 @@ import { Home } from "./pages/Home";
 import './assets/scss/global.scss'
 import { Forecast } from './pages/Forecast';
 import { useDispatch, useSelector } from 'react-redux';
-import { Popup } from './cmps/Popup';
-import { setIsPopup } from './store/actions/weatherActions';
+import { Modal } from './cmps/Modal';
+import { setIsModal } from './store/actions/weatherActions';
 
 function App() {
 
-  const onClick = () => {
-    console.log('click')
-  }
-  const dispatch = useDispatch()
-  const { isPopup } = useSelector(state => state.weatherModule)
-  const togglePopup = () => {
-    dispatch(setIsPopup())
-  }
+  // const onClick = () => {
+  //   console.log('click')
+  // }
+  // const dispatch = useDispatch()
+  // const { isModal } = useSelector(state => state.weatherModule)
+  // const toggleModal = () => {
+  //   dispatch(setIsModal())
+  // }
   return (
     <Router>
       <div className="app dark">
@@ -28,7 +28,7 @@ function App() {
             <Route path="/forecast" element={<Forecast />} />
             <Route path="/about" element={<About />} />
           </Routes>
-          {isPopup && <Popup type={'prompt'} funcs={{ togglePopup, onClick }} />}
+          {/* {isModal && <Modal type={'prompt'} funcs={{ toggleModal, onClick }} />} */}
 
         </main>
       </div>

@@ -16,11 +16,10 @@ const units = 'metric'
 //   },
 const headers = {
     'X-RapidAPI-Host': 'community-open-weather-map.p.rapidapi.com',
-    'X-RapidAPI-Key': 'd3f1c4cd2dmshc8299f35c9cd3cdp174c21jsna29fef61fb0b'
+    'X-RapidAPI-Key': process.env.REACT_APP_API_KEY
 }
 // };
 const WEATHER_KEY = 'weather'
-
 
 function query() {
 
@@ -29,7 +28,6 @@ function query() {
 async function getByCity(city) {
     let cityWeather = await _load(city)
     console.log('cityWeather', cityWeather)
-    window.navigator.geolocation.getCurrentPosition((res) => console.log(res))
     if (!cityWeather) {
         console.log('api')
         try {

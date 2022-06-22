@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
-import { useDispatch } from 'react-redux'
-import { setIsPopup } from '../store/actions/weatherActions'
-import { Popup } from './Popup'
+import { useDispatch, useSelector } from 'react-redux'
+import { setIsModal } from '../store/actions/weatherActions'
+import { Modal } from './Modal'
 import { WeatherIcon } from './WeatherIcon'
 
 export const WeatherDetails = ({ weather, onLess }) => {
@@ -12,17 +12,20 @@ export const WeatherDetails = ({ weather, onLess }) => {
     dt = new Date(dt * 1000)
     let unit = 'C'
 
-    const [iFeel, setIFeel] = useState(null)
+    // const [iFeel, setIFeel] = useState(null)
 
     const onFeel = () => {
-        // togglePopup()
-        setIFeel(prompt('?'))
+        toggleModal('feel')
+        // setIFeel(prompt('?'))
     }
 
     const dispatch = useDispatch()
-    const togglePopup = () => {
-        dispatch(setIsPopup())
+    const toggleModal = (type) => {
+        console.log('type', type)
+        const txt = type === 'feel' ? 'How do you feel?' : ''
+        dispatch(setIsModal(txt))
     }
+    const { result: iFeel } = useSelector(state => state.weatherModule.modal)
 
 
     return (
@@ -36,14 +39,18 @@ export const WeatherDetails = ({ weather, onLess }) => {
             </section>
             <section className="info">
                 <p className="temp line">Temperature: {temp} <sup>o</sup>{unit}</p>
-                <p className="feels line" onClick={onFeel}>Feels like: {feels_like} <sup>o</sup>{unit} {iFeel && <span> I feel like: {iFeel} <sup>o</sup>{unit}</span>}</p>
+                <p className="feels line" onClick={onFeel}>
+                    <span>Feels like: {feels_like} <sup>o</sup>{unit}</span>
+                    {iFeel && <span> I feel like: {iFeel} <sup>o</sup>{unit}</span>}
+                </p>
                 <p className="description line">{description} <WeatherIcon icon={icon} /></p>
                 <p className="humidity line">Humidity: {humidity}% </p>
 
 
                 <button onClick={onLess}>Less</button>
             </section>
-            {/* {isPopup && <Popup type={'prompt'} funcs={{ togglePopup, onClick }} />} */}
+            {iFeel}
+            {/* {isModal && <Modal type={'prompt'} funcs={{ toggleModal, onClick }} />} */}
         </section>
     )
 }

@@ -4,7 +4,7 @@ export function loadWeathers() {
     return async (dispatch) => {
         try {
             const weathers = await weatherService.query()
-            dispatch({ type: 'SET_WEATHERs', weathers })
+            dispatch({ type: 'SET_WEATHERS', weathers })
         } catch (error) {
             console.log('error', error)
             // throw new Error()
@@ -55,8 +55,17 @@ export function setFilterBy(filterBy) {
     }
 }
 
-export function setIsPopup() {
+export function setIsModal(txt) {
     return async (dispatch) => {
-        dispatch({ type: 'TOGGLE_IS_POPUP' })
+        dispatch({ type: 'TOGGLE_IS_MODAL', txt })
     }
 }
+
+export function setModalResult(result) {
+    return async (dispatch) => {
+        console.log('result', result)
+        dispatch({ type: 'SET_MODAL_RESULT', result })
+    }
+}
+
+

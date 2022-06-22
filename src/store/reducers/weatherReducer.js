@@ -3,7 +3,11 @@ const initialState = {
     weathers: null,
     weather: null,
     filterBy: null,
-    isPopup: false,
+    modal: {
+        isModal: false,
+        txt: '',
+        result: null
+    }
 }
 
 export function weatherReducer(state = initialState, action) {
@@ -26,8 +30,11 @@ export function weatherReducer(state = initialState, action) {
         case 'SET_FILTER_BY':
             return { ...state, filterBy: action.filterBy }
 
-        case 'TOGGLE_IS_POPUP':
-            return { ...state, isPopup: !state.isPopup }
+        case 'TOGGLE_IS_MODAL':
+            return { ...state, modal: { isModal: !state.modal.isModal, txt: action.txt, result: state.modal.result } }
+
+        case 'SET_MODAL_RESULT':
+            return { ...state, modal: { ...state.modal, result: action.result } }
 
         default:
             return state
